@@ -12,8 +12,8 @@ console.table([var_1, var_2, var_3, var_4, var_5])
 
 //We use a function 'typeof var_name' or 'typeof value', to get the type of variable/value
 
-console.log(typeof var_1)
-console.log(typeof var_2)
-console.log(typeof var_3)
-console.log(typeof var_4) //For null, its type is object
-console.log(typeof var_5) //For undefined, its type is undefined
+console.log(typeof (var_1))
+console.log(typeof (var_2))
+console.log(typeof (var_3))
+console.log(typeof (var_4)) //For null, its type is object
+console.log(typeof (var_5)) //For undefined, its type is undefined
