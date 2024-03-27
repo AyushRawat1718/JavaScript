@@ -10,7 +10,7 @@ console.table([var_1, var_2, var_3, var_4, var_5])
 
 // When the value of a variable is not initiallised or assigned, it have the default value as 'undefined'. But when we want to represent that variable is empty/void then we use null. Null is a standalone value represnting that given variable is void.
 
-//We use a function 'typeof var_name' or 'typeof value', to get the type of variable/value
+//We use a function 'typeof (var_name)' or 'typeof (value)', to get the data type of variable/value
 
 console.log(typeof (var_1))
 console.log(typeof (var_2))
