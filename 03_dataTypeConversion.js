@@ -32,3 +32,5 @@ let Bool_3 = Boolean(someBool_3) // Empty string returns false
 let Bool_4 = Boolean(someBool_4) // Non - Empty strign returns true
 
 console.table([Bool_1, Bool_2, Bool_3, Bool_4])
+
+//Cover Lecture 6 to 9
