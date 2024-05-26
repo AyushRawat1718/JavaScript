@@ -38,3 +38,34 @@ console.log(`Resultant array of splice operation is -> ${myn_arr_2}, Original ar
 
 // Carefully observe the differences on the resultant array of the operations and also the original array after the operations
 
+//---------------------------------------------------------Part - 2 ----------------------------------------------
+
+const heroes_1 = ["Spiderman", "Thor", "IronMan"]
+const heroes_2 = ["Batman", "Superman", "Joker"]
+
+const all_heroes_1 = heroes_1.concat(heroes_2) //This concatenates the given array with the referred array and returns a new array containing all the elements
+
+const all_heroes_2 = [...heroes_1,...heroes_2] //This also concatenates the given arrays. In this we can concatenate as many array as we want
+
+console.log(all_heroes_2);
+
+const new_arr = [1,2,3,4,5,[6,7,8,9],[10,11,12,[13,14,15,16]],17,18,[19,20]] //Here we have array inside an array and so on ....
+
+console.log(new_arr.flat(Infinity)) //Returns a new array with all sub-array elements concatenated into it recursively up to the specified depth. [Use depth as infinity to make it completely flat]
+
+//Some other ways of creating the array
+
+const new_arr_og1 = Array.from("Ayush") //An iterable object to convert to an array. Creates an array from an iterable object
+
+console.log(new_arr_og1)
+
+const new_arr_og2 = Array.from({Name : "Ayush"}) //Where it is not possible to create the array, then it returns an empty array
+
+console.log(new_arr_og2)
+
+let num_1 = 100
+let num_2 = 200
+let num_3 = 300
+
+const new_arr_og3 = Array.of(num_1, num_2, num_3)//Returns a new array from a set of elements.
+console.log(new_arr_og3)
