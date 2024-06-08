@@ -24,6 +24,8 @@ console.log(addNumbers_1(4,5))
 > Remember : Here no 'return' keyword and instead of curly braces '{}' we would use parenthesis '()'
 > This is called implicit return i.e function is returning itself without the return keyword, Normally we use explicit return i.e. we have
 to user return keyword to return the values.
+
+> JUST REMEMBER -> Whenever we have opened a scope in a function then we have to explicitly provide the 'return keyword'
 */
 const addNumbers_2 = (num1, num2) => (num1 + num2)
 console.log(addNumbers_2(4,5))
