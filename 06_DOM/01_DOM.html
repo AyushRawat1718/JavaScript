@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Learning | 01</title>
+</head>
+<body style = "background-color: #212121; color :#ffff">
+    <div class="parent">
+        <div class = "day">Monday</div>
+        <!-- Random Comment -->
+        <div class = "day">Tuesday
+            "<br>This is a sentence. <br>Here's another sentence."
+        </div>
+        <div class = "day">Wednesday</div>
+        <div class = "day">Thursday</div>
+        "This will be counted as a text Node"
+        <div class = "day">Friday</div>
+        <div class = "day">Saturday</div>
+        <div class = "day">Sunday</div>
+    </div>
+</body>
+<script>
+    const parent = document.querySelector(".parent"); //Selecting using querySelector Operator via parent class
+
+    console.log(parent);
+
+    console.log(parent.children); //This will give us a 'HTML collection' of all the children elements of the parent
+
+    //Traversing on the childrens
+    for (let i = 0; i < parent.children.length; i++) {
+        if (parent.children[i].innerText[0] === 'T'){
+            parent.children[i].style.color = "blue"
+        }
+        else if (parent.children[i].innerText[0] === 'S'){
+            parent.children[i].style.color = "orange"
+        }
+        else {
+            parent.children[i].style.color = "brown"
+        }
+    }
+
+    //Accessing the first child
+    console.log(`First child innerText -> ${parent.firstElementChild.innerText}`);
+    //Accessing the last child
+    console.log(`Last child innerText -> ${parent.lastElementChild.innerText}`);
+
+    const dayOne = document.querySelector(".day")
+
+    //Accessing the parent element of a node 
+    console.log(dayOne.parentElement)
+
+    //Accessing the sibling element of a node
+    console.log(dayOne.nextElementSibling.nextElementSibling.innerText)
+
+    console.log(parent.childNodes)
+    //This will give us a Node List of all the children nodes inside the parent
+
+    /*
+    Nodes can be of three types
+    >Element Nodes: These are the HTML elements you see on a web page, like <div>, <p>, or specific buttons and forms.
+    >Comment Nodes: These are comments included in the HTML code for programmers' reference, but they are not displayed on the web page
+    >Text Nodes: Whenever there is a text then it would be count as a text nodes, otherwise all the whitespace character(spaces, tabs, newline) will be count as a Text Nodes (before and after the Element Node). These characters are essential for formatting and layout but are invisible on the page themselves.
+    */
+</script>
+</html>
