@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Learning | 03</title>
+</head>
+<body style = "background-color: #212121; color :#ffff">
+    <ul class = "language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+
+    const addLanguage = (langName) => {
+        const li = document.createElement('li');
+        li.textContent = `${langName}`; //Use .textContent instead of innerText
+
+        //Here we use the css donation i.e if we want to select a 'class' named 'language' then use ".language" & if we want to select an 'id' named 'language' then use "#language".
+        const parent = document.querySelector('.language'); //Imp
+        parent.appendChild(li);
+    }
+
+    //The above function is slightly inefficient as we are traversing the complete tree there, instead of that prefer the below one.
+    const addLanguage_optimised = (langName) => {
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(langName)); //Optimization
+        document.querySelector(".language").appendChild(li)
+    }
+
+    addLanguage("Python");
+    addLanguage("C++");
+
+    /*     EDIT THE HTML ELEMENT USIGN DOM      */
+    
+    //Task -> Change the given index (According to zero based indexing) element content to the given content
+
+    //Approach - 1 => Change only the required attribute i.e. change the 'innerHTML/innerText/textContent'
+    const edit_1 = (newContent, index) => {
+        const parent = document.querySelector(".language");
+        const reqChild = parent.children[index];
+        reqChild.textContent = newContent;
+    }
+    //Approach - 2 => Replace it with the new element
+    const edit_2 = (newContent, index) => {
+        const reqChild = document.querySelector(`li:nth-child(${index+1})`) //This follows 1-based indexing
+        const newChild = document.createElement('li')
+        newChild.appendChild(document.createTextNode(newContent));
+        reqChild.replaceWith(newChild);
+    }
+
+    //Approach - 3 => Change the the complete element i.e change the 'outer html'
+    const edit_3 = (newContent, index) => {
+        const reqChild = document.querySelector(`li:nth-child(${index+1})`)
+        reqChild.outerHTML = `<li>${newContent}</li>`
+    }
+
+    // edit_1("New_Lang",1)
+    // edit_2("New_Lang",1)
+    // edit_3("New_Lang",1)
+
+    /*     REMOVE THE HTML ELEMENT USIGN DOM      */
+    const remove_Lang = (index) => {
+        const reqLang = document.querySelector(`li:nth-child(${index})`)
+        reqLang.remove();
+    }
+
+    // remove_Lang(1);
+
+</script>
+</html>
