@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learning Events | 01</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <p>Notes => JavaScript might seem sequential at first glance, where code runs line by line. But it's actually a single-threaded, event-driven language. This means even though it can only handle one thing at a time, events like user clicks or page loads can interrupt the normal flow and trigger JavaScript code to run. This creates a dynamic experience where the web page feels responsive to user interaction without halting the entire program.</p>
+    <h2>Amazing Images</h2>
+    <div>
+        <ul id = "images">
+            <li><img width="200px" id = "img_1" src="https://images.pexels.com/photos/25391643/pexels-photo-25391643/free-photo-of-a-drink-with-an-orange-slice-and-basil-leaves.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load" alt="img_1"></li>
+            <li><img width="200px" id = "img_2" src="https://images.pexels.com/photos/25403280/pexels-photo-25403280/free-photo-of-tree-leaves.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load" alt="img_2"></li>
+            <li><img width="200px" id = "img_3" src="https://images.pexels.com/photos/19712129/pexels-photo-19712129/free-photo-of-people-pouring-coffee-into-cup-outdoors.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load" alt="img_3"></li>
+            <li><img width="200px" id = "img_4" src="https://images.pexels.com/photos/25312055/pexels-photo-25312055/free-photo-of-pile-of-stones.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load" alt="img_4"></li>
+            <li><a style = "color: aliceblue;" id = "google" href="https://www.google.com/">Google</a></li>
+        </ul>
+    </div>
+  
+</body>
+<script>
+
+    const img_3_ref = document.querySelector("#img_3")
+    img_3_ref.addEventListener('click',(e) => {
+        // console.log("Img 3 Clicked")
+    })
+
+    //Some frequently usable attributes of events -> timestamp, defaultPrevented, target, clientX, clientY, screenX, screenY
+
+    //Concept of event propagation
+    /*
+    By default the third parameter value is 'false'[that means bubbling]
+    There are two terms capturing and bubbling
+    
+    Event Bubbling (Default): An event triggered on an inner element travels up the DOM tree, notifying parent elements on the way. Imagine a bubble rising through water. [It triggers event from bottom to top]
+
+    Event Capturing : The opposite of bubbling. The event starts at the document (outermost element) and travels down the DOM tree, reaching the target element last. Think of it as water trickling down from the top. [It triggers event from top to bottom]
+    */
+    
+    
+    const img_1_ref_bubbling = document.querySelector('#img_1')
+    img_1_ref_bubbling.addEventListener('click',(e) => {
+        // console.log('Img 1 Clicked via bubbling')
+        // e.stopPropagation() //This will prevent propagation from going to top i.e. preventing above or parent events from triggering
+    },false)
+
+    const images_ref_bubbling = document.querySelector('#images')
+    images_ref_bubbling.addEventListener('click',(e) => {
+        // console.log('Images div Clicked via bubbling')
+    },false)
+
+    const img_1_ref_capturing = document.querySelector('#img_1')
+    img_1_ref_capturing.addEventListener('click',(e) => {
+        // console.log('Img 1 Clicked via capturing')
+    },true)
+
+    const images_ref_capturing = document.querySelector('#images')
+    images_ref_capturing.addEventListener('click',(e) => {
+        // console.log('Images Clicked via capturing')
+        // e.stopPropagation() //This will prevent propagation from going to bottom i.e. preventing the lower or child events from triggering
+    },true)
+
+    
+    //Recommendation -> It's just for concept don't use capturing or triggering together
+
+    const google_ref = document.querySelector('#google')
+    google_ref.addEventListener('click',(e) => {
+        // console.log('prevented google from redirecting')
+        e.preventDefault(); //This will prevent default behaviour on clicking [i.e. redirecting the user to google homepage]
+        e.stopPropagation()
+    })
+
+    //Code such that on clicking any image, it gets disappear
+    const all_li = document.querySelectorAll('#images')
+    all_li.forEach((li) => {
+        li.addEventListener('click', (e) => {
+            console.log(e.target.id) //To check which element we get
+            console.log(e.target.parentNode) //To get the parent element of the image, b/c we have to remove the parent element of the image also. As image is stored in a 'li' element then if we would remove the image tag only then it would leave a bullet point (indicating an empty 'li' element)
+            const type = e.target.tagName //This will tell us the type of the tag
+            if (type === 'IMG'){
+                console.log(`${e.target.id} Deleted`)
+                const removeIt = e.target.parentNode 
+                // removeIt.remove() //Already used
+                removeIt.parentNode.removeChild(removeIt) //Another approach -> From given element that is to be removed, we went to its parent Node on that we called a function 'removeChild()' and passed the refernce of the child Node   
+            }
+        })
+    })
+</script>
+</html>
