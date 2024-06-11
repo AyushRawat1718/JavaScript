@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learning Events | 03</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <h1 id = "h1">Some Random Text</h1>
+    <button style = "background-color: #fff;" id="stop">STOP</button>
+</body>
+
+<script>
+    const sayName = () => {
+        console.log("Executed !!")
+    }
+    //This function will execute once after given milliseconds from the moment when site is loaded 
+    setTimeout(sayName, 5000) //Here we are just passing the reference of the function only.    
+
+    const changeText = () =>{
+        document.querySelector('#h1').innerHTML = "Changed Random Text"
+    }
+
+    const changeMe = setTimeout(changeText, 7000) //Note storing this as a variable won't stop it from executing, we are just creating a refernce of the function nothing else.
+
+    const stop_button = document.querySelector('#stop')
+    stop_button.addEventListener('click',(e) => {
+        clearTimeout(changeMe) //Here we have to pass the refernce of the setTimeout() function that we have to stop.    
+        console.log('Stopped from changing the random text')
+    })
+    
+</script>
+</html>
