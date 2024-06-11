@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learning Events | 04</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <h1 id = "h1">Some Random Text</h1>
+    <button style = "background-color: #fff;" id="start">START</button>
+    <button style = "background-color: #fff;" id="stop">STOP</button>
+</body>
+
+<script>
+    const start_button = document.querySelector("#start")
+    const stop_button = document.querySelector("#stop")
+    const sayName = (Name) => {
+        const date = new Date();
+        console.log(`Hello ${Name}, current time is ${date.toLocaleTimeString()}`)
+
+    }
+    let intervalId; //Declaring in the global scopef
+    start_button.addEventListener('click', () => {
+        //setInterval function takes three argument first one is the callBack function, second one is interval period in milliseconds and the third one is the argument that is to be passed to the callBack function[this one is optional]
+        intervalId = setInterval(sayName, 1000, "Ayush")
+    })
+    stop_button.addEventListener('click', () => {
+        clearInterval(intervalId);
+        console.log("Interval Stopped !!")
+    })
+</script>
+</html>
