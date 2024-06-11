@@ -26,7 +26,7 @@ const startChangingColor = () => {
 
 const stopChangingColor = () =>{
     clearInterval(intervalId)
-    intervalId = null; //clearing the memory
+    intervalId = null; //clearing the memory, as the variable is not being used for referencing
 }
 
 const resetColor = () =>{
