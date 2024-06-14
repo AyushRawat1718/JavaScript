@@ -138,3 +138,5 @@ const consumePomiseFour = async() =>{
 }
 
 consumePomiseFour()
+
+// For more conceptual clearity prefer this link -> https://www.smashingmagazine.com/2020/11/comparison-async-await-versus-then-catch/
