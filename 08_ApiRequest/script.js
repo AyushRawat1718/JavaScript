@@ -1,7 +1,6 @@
 const submit_button = document.querySelector('#submit')
     const userInput = document.querySelector('#github_username')
     const div_userData = document.querySelector('#userData')
-    let flag = false
 
     submit_button.addEventListener('click',() => {
         url = `https://api.github.com/users/${userInput.value}`
